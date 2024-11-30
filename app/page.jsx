@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Results from './components/Results';
 
 const API_KEY = process.env.API_KEY;
@@ -24,7 +25,13 @@ export default async function Home({ searchParams }) {
   
 }
 
-
+export function about() { 
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AboutPage />
+    </Suspense>
+  );
+}
 
 
 
