@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
-import Providers from "./providers";
+import Providers from "./Providers";
 import NavBar from "./components/NavBar"
 import SearchBox from "./components/SearchBox";
 
