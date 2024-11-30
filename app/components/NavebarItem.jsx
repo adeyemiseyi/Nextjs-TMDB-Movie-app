@@ -1,22 +1,12 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-export default function NavebarItem({ title, param }) {
-    const [isClient, setIsClient] = useState(false);
+const NavebarItem = ({ title, param }) => {
     const searchParams = useSearchParams();
     const genre = searchParams.get('genre');
-
-    // Ensure that useSearchParams only runs on the client
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
-
-    if (!isClient) {
-        return null; // Or a loading state while waiting for the client
-    }
 
     return (
         <div>
@@ -33,7 +23,16 @@ export default function NavebarItem({ title, param }) {
             </Link>
         </div>
     );
-}
+};
+
+// Make sure to wrap your component in Suspense when it's used
+const MyPage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <NavebarItem title="My Title" param="action" />
+  </Suspense>
+);
+
+export default MyPage;
 
 
 
