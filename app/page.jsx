@@ -25,7 +25,7 @@ export default async function Home({ searchParams }) {
   
 }
 
-export function About() { 
+export function about() { 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <about />
